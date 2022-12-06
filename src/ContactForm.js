@@ -22,6 +22,8 @@ export default class ContactForm extends React.Component {
         You heard about us from: ${this.state.refSource}`)
     }
 
+    
+
     render() {
         return (
             <React.Fragment>
@@ -55,7 +57,8 @@ export default class ContactForm extends React.Component {
                     </select>
                 </div>
                 <div>
-                    <button onClick={this.showInfo}>Submit</button>
+                    <button disabled={this.state.firstName === '' ? true: this.state.lastName === '' ? true: 
+                    this.state.enquiry === '' ? true: this.state.refSource === '' ? true: false} onClick={this.showInfo}>Submit</button>
                 </div>
             </React.Fragment>
             
