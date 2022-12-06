@@ -1,0 +1,7 @@
+.form-container {
+  width: 80%;
+  border: 1px solid blueviolet;
+  border-radius: 20%;
+  margin: 1em auto;
+  padding: 1em;
+}
