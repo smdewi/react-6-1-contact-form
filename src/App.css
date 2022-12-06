@@ -1,7 +1,22 @@
-.form-container {
-  width: 80%;
-  border: 1px solid blueviolet;
+select {
+  margin: 0 1em;
+}
+
+button {
+  background-color: blueviolet;
+  color: white;
+  padding: 0.5em;
+  border: none;
   border-radius: 20%;
+}
+
+.form-container {
+  width: 75%;
+  border: 1px solid blueviolet;
   margin: 1em auto;
   padding: 1em;
+}
+
+.form-group {
+  margin-bottom: 1em;
 }
