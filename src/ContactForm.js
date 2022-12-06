@@ -5,7 +5,8 @@ export default class ContactForm extends React.Component {
         'firstName': '',
         'lastName': '',
         'enquiry': '',
-        'refSource': ''
+        'refSource': '',
+        'contact': []
     }
 
     updateFormField = (e) => {
@@ -21,8 +22,6 @@ export default class ContactForm extends React.Component {
         Enquiry on ${this.state.enquiry} \n
         You heard about us from: ${this.state.refSource}`)
     }
-
-    
 
     render() {
         return (
@@ -55,6 +54,12 @@ export default class ContactForm extends React.Component {
                         <option value="social media">Social Media</option>
                         <option value="others">Others</option>
                     </select>
+                </div>
+                <div className="form-group">
+                    <label>How would you like to be contacted? </label>
+                    <input name="contact" type="checkbox" value="email" checked={this.state.contact.includes('email')}/>Email
+                    <input name="contact" type="checkbox" value="phone" checked={this.state.contact.includes('phone')}/>Phone 
+                    <input name="contact" type="checkbox" value="mail" checked={this.state.contact.includes('mail')}/>Mail
                 </div>
                 <div>
                     <button disabled={this.state.firstName === '' ? true: this.state.lastName === '' ? true: 
