@@ -15,12 +15,28 @@ export default class ContactForm extends React.Component {
         })
     }
 
+    updateContact = (e) => {
+        if (this.state.contact.includes(e.target.value) === false) {
+            let cloned = [...this.state.contact, e.target.value];
+            this.setState({
+                contact: cloned
+            });
+        }
+        else {
+            let indexToRemove = this.state.contact.indexOf(e.target.value);
+            let cloned = [...this.state.contact.slice(0,indexToRemove),...this.state.contact.slice(indexToRemove+1)]
+            this.setState({
+                contact: cloned
+            });
+        }
+    }
+
     showInfo = () => {
         alert(`Form submitted successfully! \n
-        Here is a summary of what you submitted: \n 
         ${this.state.firstName} ${this.state.lastName} \n
         Enquiry on ${this.state.enquiry} \n
-        You heard about us from: ${this.state.refSource}`)
+        You heard about us from: ${this.state.refSource}\n
+        Contact by ${this.state.contact}`);
     }
 
     render() {
@@ -57,9 +73,12 @@ export default class ContactForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label>How would you like to be contacted? </label>
-                    <input name="contact" type="checkbox" value="email" checked={this.state.contact.includes('email')}/>Email
-                    <input name="contact" type="checkbox" value="phone" checked={this.state.contact.includes('phone')}/>Phone 
-                    <input name="contact" type="checkbox" value="mail" checked={this.state.contact.includes('mail')}/>Mail
+                    <input name="contact" type="checkbox" value="email" checked={this.state.contact.includes('email')}
+                    onChange={this.updateContact}/>Email
+                    <input name="contact" type="checkbox" value="phone" checked={this.state.contact.includes('phone')}
+                    onChange={this.updateContact}/>Phone 
+                    <input name="contact" type="checkbox" value="mail" checked={this.state.contact.includes('mail')}
+                    onChange={this.updateContact}/>Mail
                 </div>
                 <div>
                     <button disabled={this.state.firstName === '' ? true: this.state.lastName === '' ? true: 
